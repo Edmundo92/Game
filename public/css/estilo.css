@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+body{
+    background-color: #D9E3E2;
+    //overflow: hidden;
+}
+.box_main{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 30px;
+}
+.main{
+    height: 100%;
+}
+
+/* retro_qt */
+.retro_qt{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+}
+.contagem{
+    font-size: 3em;
+    font-weight: bolder;
+}
+
+/* perguntas config */
+.box_perguntas{
+    height: 250px;
+    //background: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+.perguntas{
+    width: 95%;
+    height: 100px;
+    text-align: center;
+}
+.pergunta{
+    font-size: 3em;
+}
+
+/* respostas config */
+.box_respostas{
+    height: 850px;
+    margin-bottom: 20px;
+}
+.respostas{
+    padding-top: 40px;
+    height: 100%;
+}
+.box_respostas .r{ 
+    display: flex;
+    align-items: center;
+    height: 23%;
+    font-size: 4em;
+}
+.r_{
+    height: 100%;
+    width: 100%;
+    font-size: 0.8em;
+    
+}
+.r_res{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
+}
+input[type=radio]{
+    width: 36px;
+    height: 16px;
+    visibility: hidden;
+}
+input[type=radio]:before {
+content: " ";
+background-color: transparent;
+display: inline-block;
+margin-right: 15px;
+margin-top: -30px;
+width: 66px;
+height: 66px;
+border: 3px solid #62B0EC;
+-webkit-border-radius: 50%;
+-moz-border-radius: 50%;
+border-radius: 50%;
+visibility: visible;
+box-shadow: 0 0 0px 2px white;
+}
+input[type=radio]:checked:before {
+    background-color: #62B0EC;
+}
+.r_select{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.r, .btn_confirm{
+    width: 100%;
+    height: 60px;
+    background-color: #F8F8F9;
+    margin: 10px 0;
+    border-radius: 4px;
+    box-shadow: 0px 0px 1px gray;
+}
+.btn_confirm{
+    border: 1px solid transparent;
+    background-color: #62B0EC;
+    color: white;
+}
+
+
+/* help config */
+.box_help{
+    padding: 10px;
+}
+.help{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+.h{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #62B0EC;
+}
+
+
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
+
+
+
+
+.fundo{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+}
+.none{
+    display: none;
+}
+
+.ajuda_1{
+    height: 90%;
+    width: 90%;
+    background-color: white;
+    position: fixed;
+    z-index: 1;
+    transform: translate(-100% ,67px);
+    transition: 900ms ease-in-out;
+}
+.slide{
+    transform: translate(45px, 67px);
+}
+
+.a_head span{
+    font-size: 4em;
+    display: block;
+    padding: 3px 20px 0 0;
+    color: gray;
+    text-align: right;
+}
+.a_body{
+    height: 80%;
+    font-size: 8em;
+    display: flex;
+    flex-direction: column;
+}
+.r_perc{
+    height: 140px;
+    width: 90%;
+    margin-top: 5px;
+    background: red;
+}
