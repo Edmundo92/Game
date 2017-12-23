@@ -150,8 +150,9 @@ var r_2 = document.querySelector(".r_2");
 var r_3 = document.querySelector(".r_3");
 var r_4 = document.querySelector(".r_4");
 var ajuda1 = document.querySelector(".ajuda_1");
+var ajuda2 = document.querySelector(".ajuda_2");
 var fundo = document.querySelector(".fundo");
-var close = document.querySelector(".close");
+var close = document.querySelectorAll(".close");
 var aBody = document.querySelector(".a_body");
 var rPerc = document.querySelectorAll(".r_perc");
 var num1, num2, num3, num4;
@@ -181,10 +182,18 @@ a1.addEventListener("click", function(){
     
 });
 
-close.addEventListener("click", function(){
-    ajuda1.classList.toggle("slide");
-    setTimeout(function(){ fundo.classList.toggle("none"); }, 1500);
+close.forEach(function(k){
+    k.addEventListener("click", function(event){
+        var x = event.target;
+        if(x.parentElement.id == "close"){
+           ajuda2.classList.toggle("slide");
+         }else{
+             ajuda1.classList.toggle("slide");
+         } 
+         setTimeout(function(){ fundo.classList.toggle("none"); }, 1500);
+    });
 });
+
 
 //gera numeros aleatorios
 function getRandom(max) {
@@ -304,3 +313,13 @@ a_2.addEventListener("click", function(){
     a_2.setAttribute("disabled", "disable");
     
 });
+
+
+
+
+//funcao chamada
+var a_4 = document.querySelector(".a_4");
+a_4.addEventListener("click", function(){
+    fundo.classList.toggle("none");
+    setTimeout(function(){ ajuda2.classList.toggle("slide"); }, 1000);
+});  
