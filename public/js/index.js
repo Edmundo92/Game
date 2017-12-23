@@ -4,9 +4,11 @@ var perguntaBox = document.querySelector(".pergunta");
 var qtAcertos = document.querySelector(".qt_acertos");
 var qtTotal = document.querySelector(".qt_total");
 var Respostas = document.querySelector(".respostas");
+var nodes = document.querySelectorAll(".r_res");
 
 var respostas = [];
 var perguntas = [];
+var vetNone = [];
 
 var cont = 0;
 var contRespostas = 1;
@@ -16,39 +18,11 @@ console.log(boxRespostas);
 
 
 //respostas
-var res1 = {
-    r1: { id: 1, r: 'Palanca Negra Gigante'},
-    r2: { id: 2, r: 'Elefante'},
-    r3: { id: 3, r: 'Coala' },
-    r4: { id: 4, r: 'Leão'}
-}
-
-var res2 = {
-    r1: { id: 3, r: '7'},
-    r2: { id: 2, r: '10'},
-    r3: { id: 1, r: '5'},
-    r4: { id: 4, r: '14'}
-}
-var res3 = {
-    r1: { id: 4, r: 'Pedreiro'},
-    r2: { id: 2, r: 'Empresario'},
-    r3: { id: 3, r: 'Lutava na rua' },
-    r4: { id: 1, r: 'Raboteiro'}
-}
-
-var res4 = {
-    r1: { id: 3, r: 'Paulo'},
-    r2: { id: 2, r: 'Edmundo'},
-    r3: { id: 1, r: 'Alex'},
-    r4: { id: 4, r: 'Domingos'}
-}
-
-var res5 = {
-    r1: { id: 3, r: 'Paulo e Gelson'},
-    r2: { id: 1, r: 'Paulo'},
-    r3: { id: 2, r: 'Gelson'},
-    r4: { id: 4, r: 'Alex e Biunda'}
-}
+var res1 = { r1: { id: 1, r: 'Palanca Negra Gigante'}, r2: { id: 2, r: 'Elefante'}, r3: { id: 3, r: 'Coala' }, r4: { id: 4, r: 'Leão'} }
+var res2 = { r1: { id: 3, r: '7'}, r2: { id: 2, r: '10'}, r3: { id: 1, r: '5'}, r4: { id: 4, r: '14'} }
+var res3 = { r1: { id: 4, r: 'Pedreiro'}, r2: { id: 2, r: 'Empresario'}, r3: { id: 3, r: 'Lutava na rua' },r4: { id: 1, r: 'Raboteiro'} }
+var res4 = { r1: { id: 3, r: 'Paulo'}, r2: { id: 2, r: 'Edmundo'}, r3: { id: 1, r: 'Alex'}, r4: { id: 4, r: 'Domingos'} }
+var res5 = { r1: { id: 3, r: 'Paulo e Gelson'}, r2: { id: 1, r: 'Paulo'}, r3: { id: 2, r: 'Gelson'},r4: { id: 4, r: 'Alex e Biunda'}}
 
 //perguntas
 var pergunta = {
@@ -81,28 +55,22 @@ perguntas.push(pergunta4);
 perguntas.push(pergunta5);
 
 
-
-
-//boxRespostas.forEach(function(v){
-//        v.addEventListener("click", function(event){
-//            let k = v.parentElement;
-//            let x = k.parentElement.querySelector(".r_res");
-//            //console.log(x.id);
-//            
-//        });
-//    });
-
-
 questionario(cont);
 
 function questionario(cont){
     
     
+        for(var i=0; i<nodes.length; i++){
+            if(i == vetNone[0] || i == vetNone[1]){
+                nodes[i].parentElement.parentElement.style.opacity = "1";
+                console.log(nodes[i]);
+            }
+        }
+    
     
     var contadorAcertos = cont + 1;
     
     if(contadorAcertos > perguntas.length){ 
-        alert("Vencedor");
         return;
     }
     
@@ -139,7 +107,6 @@ function questionario(cont){
 
 
 Respostas.addEventListener("click", event =>{
-   
     
     var elementPai = event.target.parentElement.parentElement;
     
@@ -151,6 +118,8 @@ Respostas.addEventListener("click", event =>{
         elementPai.classList.add("green");
         elementTarget.setAttribute("checked", "checked");
         cont ++;
+        
+        setCont(cont);
         
         setTimeout(function(){ 
             elementPai.classList.toggle("green");
@@ -219,7 +188,7 @@ close.addEventListener("click", function(){
 
 //gera numeros aleatorios
 function getRandom(max) {
-    return Math.floor(Math.random() * max + 1)
+    return Math.floor(Math.random() * max + 1);
 }
 
 function verificar(){
@@ -238,10 +207,6 @@ function verificar(){
         
         if(soma == 100){
             if(num1 > num2 && num1 > num3 && num1 > num4){
-                console.log(num1);
-                console.log(num2);
-                console.log(num3);
-                console.log(num4);
                 return valores = {
                     v1: num1,
                     v2: num2,
@@ -260,15 +225,17 @@ function colocarPercentTable(contagem, k){
         if(i == contagem){
             rPerc[i].textContent = k.v1+" %";
             rPerc[i].style.width = k.v1+"%"
-        }else if(k.v2){
+        }else if(rPerc.childElementCount == 0){
             rPerc[i].textContent = k.v2+" %";
             rPerc[i].style.width = k.v2+"%"
-        }else if(k.v3){
+        }else if(rPerc.childElementCount == 0){
             rPerc[i].textContent = k.v3+" %";
             rPerc[i].style.width = k.v3+"%"
-        }else if(k.v4){
+        }else if(rPerc.childElementCount == 0){
             rPerc[i].textContent = k.v4+" %";
             rPerc[i].style.width = k.v4+"%"
+        }else if(i == 0 && i != contagem){
+            
         }
     }
     
@@ -282,3 +249,58 @@ function colocarPercentTable(contagem, k){
 //    r_4.textContent = k.v4+" %";
 //    r_4.style.width = k.v4+"%";
 }
+
+
+//funcao pular questao
+var a_3 = document.querySelector(".a_3");
+a_3.addEventListener("click", function(){
+    
+    var contador = setCont(cont);
+    questionario(contador + 1);
+    
+    a_3.setAttribute("disabled", "disable");
+    
+});
+
+function  setCont(cont){
+    return cont;
+}
+
+
+
+//funcao 50/50
+var a_2 = document.querySelector(".a_2");
+a_2.addEventListener("click", function(){
+    var vet = [];
+    
+    for(var i=0; i<nodes.length; i++){
+        if(nodes[i].id == 1){
+            vet.push(i);
+        }
+    }
+    
+    var bool = 0;
+    while(bool == 0){
+        var k = getRandom(4);
+        console.log(k);
+        if(k !== vet[0]){
+            vet.push(k);
+            console.log(vet);
+            bool++;
+        }else{
+            bool = 0;
+        }
+    }
+                     
+    console.log(vet);
+    for(var i=0; i<nodes.length; i++){
+        if(i !== vet[0] && i !== vet[1]){
+            nodes[i].parentElement.parentElement.style.opacity = "0";
+            vetNone.push(i);
+        }
+    }
+    
+    
+    a_2.setAttribute("disabled", "disable");
+    
+});
