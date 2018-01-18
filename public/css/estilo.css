@@ -16,7 +16,7 @@ body{
     left: 0;
     bottom: 0;
     right: 0;
-    padding: 30px;
+    padding: 20px;
 }
 .main{
     height: 100%;
@@ -26,10 +26,9 @@ body{
 .retro_qt{
     display: flex;
     justify-content: space-between;
-    height: 100px;
 }
 .contagem{
-    font-size: 3em;
+    font-size: 1.8em;
     font-weight: bolder;
 }
 
@@ -40,15 +39,14 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
 }
 .perguntas{
     width: 95%;
-    height: 100px;
+    //height: 100px;
     text-align: center;
 }
 .pergunta{
-    font-size: 3em;
+    font-size: 2em;
 }
 
 /* respostas config */
@@ -57,14 +55,14 @@ body{
     margin-bottom: 20px;
 }
 .respostas{
-    padding-top: 40px;
+    padding-top: 0px;
     height: 100%;
 }
 .box_respostas .r{ 
     display: flex;
     align-items: center;
     height: 23%;
-    font-size: 4em;
+    font-size: 2em;
 }
 .r_{
     height: 100%;
@@ -193,6 +191,12 @@ input[type=radio]:checked:before {
     font-size: 8em;
     display: flex;
     flex-direction: column;
+
+}
+.a_body .fa{
+    display: block;
+    width: 100%;
+    text-align: center;
 }
 .r_perc{
     height: 140px;

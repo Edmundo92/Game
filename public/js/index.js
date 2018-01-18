@@ -137,6 +137,8 @@ Respostas.addEventListener("click", event =>{
             elementTarget.removeAttribute("checked");
             questionario(cont);
         }, 2000);
+        
+        navigator.vibrate([500,1,500,1,500,1,500,1,500,1,500,1,500]);
     }
     
     //questionario(cont);
